@@ -32,7 +32,16 @@ printf "\nFFmpeg build process is finished.\n"
 # You can skip this step if these files are already generated.
 cd ..
 python FFmpegParser.py -p $FFMPEG_DIR -d $JNI_DIR
-cp Android_shared.mk $FFMPEG_PREFIX/Android.mk
+
+if [ "$USE_STATIC_FFMPEG_LIBS" = true ]; then
+    cp Android_prebuilt_static.mk $FFMPEG_PREFIX/Android.mk
+    cd ..
+    cp Android_static.mk $JNI_DIR/Android.mk
+else
+    cp Android_prebuilt_shared.mk $FFMPEG_PREFIX/Android.mk
+    cd ..
+    cp Android_shared.mk $JNI_DIR/Android.mk
+fi
 
 cd $JNI_DIR
 export ABI=$CPU

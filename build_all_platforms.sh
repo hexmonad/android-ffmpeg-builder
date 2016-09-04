@@ -10,7 +10,11 @@ export FFMPEG_DIR="$(pwd)/ffmpeg/FFmpeg"
 export JNI_DIR="$(pwd)/jni"
 export JNI_LIBS="$(pwd)/jni/jniLibs"
 
-export FFMPEG_COMMON_FLAGS="--disable-static --disable-programs --disable-doc --enable-shared --enable-protocol=file"
+export FFMPEG_COMMON_FLAGS="--disable-programs --disable-doc --enable-shared --enable-static --enable-protocol=file"
+
+# If USE_STATIC_FFMPEG_LIBS = true, this script generates a single shared library which consist of static ffmpeg libraries and a library to run ffmpeg commands.
+# Otherwise, the script generates a set of shared libraries.
+export USE_STATIC_FFMPEG_LIBS=false
 
 # run build scripts for each platform
 # if you don't want to build a library for particular platform, just comment out the corresponding line
