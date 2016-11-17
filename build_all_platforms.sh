@@ -19,4 +19,4 @@ export USE_STATIC_FFMPEG_LIBS=false
 # run build scripts for each platform
 # if you don't want to build a library for particular platform, just comment out the corresponding line
 
-./ffmpeg/build_armeabi.sh
+./ffmpeg/build_armeabi-v7a.sh
