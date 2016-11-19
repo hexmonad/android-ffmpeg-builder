@@ -8,7 +8,7 @@ Requirements
 ------------
 
 - Android NDK r10e (https://developer.android.com/ndk/downloads/index.html)
-- Ffmpeg 2.8.4 (http://ffmpeg.org/download.html)
+- FFmpeg 3.0.2 (http://ffmpeg.org/download.html)
 
 How to install
 --------------
