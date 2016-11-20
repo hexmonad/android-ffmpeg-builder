@@ -17,12 +17,14 @@ def changeGeneratedSoNames(file_path):
     with open(abs_path,'w') as new_file:
         with open(file_path) as old_file:
             for line in old_file:
-                if line.startswith("SLIBNAME_WITH_MAJOR='"):
-                    new_file.write("SLIBNAME_WITH_MAJOR='$(SLIBPREF)$(FULLNAME)-$(LIBMAJOR)$(SLIBSUF)'\n")
+                if line.startswith("SLIBNAME_WITH_VERSION='"):
+                    new_file.write("SLIBNAME_WITH_VERSION='$(SLIBNAME)'\n")
+                elif line.startswith("SLIBNAME_WITH_MAJOR='"):
+                    new_file.write("SLIBNAME_WITH_MAJOR='$(SLIBNAME)'\n")
                 elif line.startswith("SLIB_INSTALL_NAME='"):
-                    new_file.write("SLIB_INSTALL_NAME='$(SLIBNAME_WITH_MAJOR)'\n")
+                    new_file.write("SLIB_INSTALL_NAME='$(SLIBNAME_WITH_VERSION)'\n")
                 elif line.startswith("SLIB_INSTALL_LINKS='"):
-                    new_file.write("SLIB_INSTALL_LINKS='$(SLIBNAME)'\n")
+                    new_file.write("SLIB_INSTALL_LINKS=\n")
                 else:
                     new_file.write(line)
     close(fh)
