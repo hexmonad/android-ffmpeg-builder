@@ -22,7 +22,7 @@ def get_white_symbols_from_line(line):
     return res
 
 
-files_set = ['ffmpeg_opt.c', 'ffmpeg_filter.c']
+files_set = ['ffmpeg_opt.c', 'ffmpeg_filter.c', 'ffmpeg_hw.c']
 
 parser = ArgumentParser()
 parser.add_argument("-p", "--prefix", dest="prefix",
@@ -65,7 +65,7 @@ help_file.write(
     "Every file have assigned leading code from 1 to N and MMM sub-code"
     " according to error. \nAlso every code have according to it number of line.\n\n")
 
-input_file = open(prefix + 'cmdutils.h')
+input_file = open(prefix + 'fftools/cmdutils.h')
 out = open(out_dir + 'cmdutils.h', 'w+')
 
 pass_headers = False
@@ -81,7 +81,7 @@ for line in input_file.readlines():
 
 out.close()
 
-input_file = open(prefix + 'cmdutils.c')
+input_file = open(prefix + 'fftools/cmdutils.c')
 out = open(out_dir + 'cmdutils.c', 'w+')
 
 files_counter = 1
@@ -150,9 +150,9 @@ for line in input_file.readlines():
 out.close()
 
 # Copy ffmpeg.h to jni folder without any changes
-copyfile(prefix + 'ffmpeg.h', out_dir + 'ffmpeg.h')
+copyfile(prefix + 'fftools/ffmpeg.h', out_dir + 'ffmpeg.h')
 
-input_file = open(prefix + 'ffmpeg.c')
+input_file = open(prefix + 'fftools/ffmpeg.c')
 out = open(out_dir + 'ffmpeg.c', 'w+')
 
 current_counter = 0
@@ -222,7 +222,7 @@ for line in input_file.readlines():
 out.close()
 
 for name in files_set:
-    input_file = open(prefix + name)
+    input_file = open(prefix + 'fftools/' + name)
     out = open(out_dir + name, 'w+')
 
     current_counter = 0
