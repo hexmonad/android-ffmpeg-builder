@@ -2,7 +2,8 @@
 
 # Please setup a path to Android NDK below manually
 export ANDROID_NDK_DIR=
-export TARGET_PLATFORM=android-18
+# Minimum platform version for arm64 is 21
+export TARGET_PLATFORM=android-21
 
 export PATH="$PATH:$ANDROID_NDK_DIR"
 
@@ -19,4 +20,5 @@ export USE_STATIC_FFMPEG_LIBS=false
 # run build scripts for each platform
 # if you don't want to build a library for particular platform, just comment out the corresponding line
 
-./ffmpeg/build_armeabi-v7a.sh
+#./ffmpeg/build_armeabi-v7a.sh
+./ffmpeg/build_arm64-v8a.sh

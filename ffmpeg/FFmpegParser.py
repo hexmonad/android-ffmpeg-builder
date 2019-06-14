@@ -174,7 +174,7 @@ for line in input_file.readlines():
     elif pass_main and not pass_bracket:
 	pass_bracket = True
 	out.write(line)
-	out.write("\treceived_sigterm = 0;\n\treceived_nb_signals = 0;\n\n\ttranscode_init_done = 0;\n\tffmpeg_exited = 0;\n\tmain_return_code = 0;\n\trun_as_daemon  = 0;\n\n\tnb_frames_dup = 0;\n\tnb_frames_drop = 0;\n\tnb_input_streams = 0;\n\tnb_input_files   = 0;\n\tnb_output_streams = 0;\n\tnb_output_files   = 0;\n\tnb_filtergraphs = 0;\n\n")
+	out.write("\treceived_sigterm = 0;\n\treceived_nb_signals = 0;\n\n\tatomic_store(&transcode_init_done, 0);\n\tffmpeg_exited = 0;\n\tmain_return_code = 0;\n\trun_as_daemon  = 0;\n\n\tnb_frames_dup = 0;\n\tnb_frames_drop = 0;\n\tnb_input_streams = 0;\n\tnb_input_files   = 0;\n\tnb_output_streams = 0;\n\tnb_output_files   = 0;\n\tnb_filtergraphs = 0;\n\n")
 	
 	out.write("\tint jmpret = setjmp(env_buf);\n\tif (jmpret != 0) {\n\t\treturn jmpret;\n\t}\n\n")
     elif pass_main and "exit_program(received_nb_signals ? 255 : main_return_code);" in line:
